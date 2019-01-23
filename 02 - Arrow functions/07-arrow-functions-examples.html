@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Arrow functions examples</title>
+</head>
+<body>
+<script>
+
+// Example - The supplied data is poor and not structured well! Ideally want it in an object to crack on!
+const race = '100m Dash';
+const winners = ['Hunter Gath', 'Singa Song', 'Imda Bos'];
+
+// // Using ({curly brackets}) we can return an object from the function
+// const win = winners.map((winner, i) => ({
+// 	name: winner,
+// 	race: race, 
+//   place: i + 1
+// 	})
+// );
+
+// Instead of using race: race where object name is the same as object value you can just use single race parameter
+const win = winners.map((winner, i) => ({name: winner, race, place: i + 1}));
+console.table(win);
+
+const ages = [23,62,45,234,2,62,234,62,34];
+
+// Filter only the ages at are over 60 and make new array called old
+const old = ages.filter(age => age >= 60);
+console.log(old);
+
+</script>
+</body>
+</html>

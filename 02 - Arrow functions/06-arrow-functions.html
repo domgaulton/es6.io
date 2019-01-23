@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Arrow functions → → </title>
+</head>
+<body>
+<script>
+  const names = ['wes', 'kait', 'lux'];
+
+ 
+
+  // Takes fullname and returns it with bos as a surname
+  const fullNames = names.map(function(name) {
+    return `${name} bos`;
+  });
+
+  // To make it an arrow function first thing you do is remove function and replace with and arrow after variable
+  const fullNames2 = names.map((name) => {
+    return `${name} bos`;
+  });
+
+  // Use brackets if you have two parameters (name, i) for example, but if there is only one then you can drop the brackets
+  const fullNames3 = names.map(name => {
+    return `${name} bos`;
+  });
+
+  // Implicit return (return is expected so get rid of the return callback inside the curly brackets {}) - One line solution to returning a value. Have to remove curly brakets otherwise values are not defined
+  const fullNames4 = names.map(name => `${name} bos`);
+
+  // If you have no parameters (arguements) to send to the function send empty brackets ()
+  const fullNames5 = names.map(() => `cool bos`);
+
+  // Arrow functions are always anonomous functions! You can do it like this though
+  const sayMyNameArrow = (name) => {console.log(`Hello ${name}!`)};
+  
+  // Below is a named function named 'sayMyName'
+  const sayMyName = (name) => {
+    console.log(`Hello ${name}!`)
+  }
+
+  sayMyName('named function');
+  sayMyNameArrow('arrow function');
+
+</script>
+</body>
+</html>

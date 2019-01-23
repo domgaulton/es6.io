@@ -7,9 +7,17 @@
 <body>
 <script>
   function calculateBill(total, tax = 0.13, tip = 0.15) {
+  	// // Old way of doing this without default arguements
+  	// if (tax === undefined) {
+  	// 	tax = 0.13
+  	// }
+  	// // Or like this
+  	// tax = tax || 0.13
     return total + (total * tax) + (total * tip);
   }
 
+  // // Can't leave a hole like below must use undefined
+  // const totalBill = calculateBill(100, , 0.25);
   const totalBill = calculateBill(100, undefined, 0.25);
   console.log(totalBill);
 </script>

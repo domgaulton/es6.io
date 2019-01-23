@@ -12,7 +12,11 @@
 <button id="pushy">Push Me</button>
 
 <script>
-  // When you really need `this`
+  
+  // OVERVIEW NOTE: On the whole the arrow function usage is linked to 'this' usage. Don't use an arrow function in the following scenarios;
+  
+
+  // When you really need `this` variable
   const button = document.querySelector('#pushy');
   button.addEventListener('click', function() {
     console.log(this);
@@ -22,6 +26,8 @@
   // When you need a method to bind to an object
   const person = {
     points: 23,
+    // Or when you have a method on an object you can do the below uncommented... Both ways are the same, one is tidier. 
+    // score: function() {
     score() {
       console.log(this);
       this.points++;
@@ -39,11 +45,12 @@
   const beemer = new Car('bmw', 'blue');
   const subie = new Car('Subaru', 'white');
 
-  Car.prototype.summarize = function() {
+  // prototype means we can add a method to the object so we add a summarise method (function) to the object!
+  Car.summarize = function() {
      return `This car is a ${this.make} in the colour ${this.colour}`;
   };
 
-  // When you need arguments object
+  // When you need arguments object - Arguements gives an array from the items passed https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments
   const orderChildren = function() {
     const children = Array.from(arguments);
     return children.map((child, i) => {
