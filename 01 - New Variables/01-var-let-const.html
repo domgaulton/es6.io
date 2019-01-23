@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>let and const</title>
+</head>
+<body>
+<script>
+  function setWidth() {
+    // var variables are only avaliable (scoped) inside the function unless they are set on the root (globally set)
+    var width = 100;
+    console.log(width);
+
+    // Can set them twice without an error (dangerous if you forget the name of your variables)
+    var width = 200;
+    console.log(width);
+  }
+  setWidth();
+  // This will cause an error as width is set inside setWidth() function. 
+  // !!It is only scoped inside the function!!
+  console.log(width);
+
+  var age = 100;
+  if(age > 12) {
+    // with var -> once this function is called inside the function (or block '{}') it leaks to the global but using const / let means it can only be called inside. LET and CONST are block scoped
+    // var dogYears = age * 7;
+    const dogYears = age * 7;
+    console.log(`You are ${dogYears} dog years old!`);
+  }
+
+  let height = 200;
+  const key = 'abc123';
+</script>
+</body>
+</html>

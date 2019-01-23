@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>let and const</title>
+</head>
+<body>
+<script>
+
+  // Difference between Let and Const -> Let variables can be updated inside a block (function) but const can't. Let variables inside and outside are treated like two seperate variables so depending where you want to use them they will return either scoped or not scoped values
+  const key = 'abc123';
+  let points = 50;
+  let winner = false;
+
+  // You can't update the person constant but you can update the object units inside e.g. person.age = 29 
+  const person = {
+    name: 'Wes',
+    age: 28
+  }
+
+  // If you wanted to make all values fixed you can use freeze but not part of es6 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze
+  const wes = Object.freeze(person);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>let and const real world</title>
+</head>
+<body>
+<script>
+  // Fix the scope to this block only (no need for IIFE https://developer.mozilla.org/en-US/docs/Glossary/IIFE)
+  {
+    const name = 'wes';
+    console.log(name);
+  }
+
+  // if we use var = i below, the i variable leaks into the global scope
+  for(let i = 0; i < 10; i++) {
+    console.log(i);
+    setTimeout(function() {
+      // with var the number after 1 second is already at 10 as it has finished looping / iterating! This wouldn't work if you had an AJAX request for example
+      console.log('The number is ' + i);
+    },1000);
+  }
+
+</script>
+</body>
+</html>
