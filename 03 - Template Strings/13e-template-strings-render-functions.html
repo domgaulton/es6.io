@@ -12,6 +12,7 @@
     keywords: ['pale', 'cloudy', 'spiced', 'crisp']
   };
 
+  // This function is used inside the markup tag below
   function renderKeywords(keywords) {
     return `
       <ul>
@@ -20,6 +21,7 @@
     `;
   }
 
+  // add renderKeyword rather than nesting backticks and having to map inside (React type style)
   const markup = `
     <div class="beer">
       <h2>${beer.name}</h2>

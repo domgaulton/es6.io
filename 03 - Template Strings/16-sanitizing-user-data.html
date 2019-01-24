@@ -8,6 +8,10 @@
     abbr {
       border-bottom:1px dotted grey;
     }
+
+    .hl {
+      background: yellow;
+    }
   </style>
 </head>
 <body>
@@ -18,13 +22,23 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/0.8.2/purify.min.js"></script>
 <script>
+
+  // Sanitise to make sure user isn't injecting iframes / images that could harm your site
+
   function sanitize(strings, ...values) {
+    // this string is still dirty, it's just been reduced
     const dirty = strings.reduce((prev, next, i) => `${prev}${next}${values[i] || ''}`, '');
+    // pass it to the DOMPurify function - https://github.com/cure53/DOMPurify#using-the-unminified-development-version
     return DOMPurify.sanitize(dirty);
   }
 
   const first = 'Wes';
   const aboutMe = `I love to do evil <img src="http://unsplash.it/100/100?random" onload="alert('you got hacked');" />`;
+
+  // const html = `
+  //   <h3>${first}</h3>
+  //   <p>${aboutMe}</p>
+  // `;
 
   const html = sanitize`
     <h3>${first}</h3>

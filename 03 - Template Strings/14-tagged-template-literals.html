@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tagged Templates</title>
+
+  <style>
+    .hl {
+      background: yellow;
+    }
+  </style>
+</head>
+<body>
+
+<script>
+  // VIDEO REPEAT '...' Rest Operator in ES6 (takes the rest of the values and put them into an array) Then can use the function to build the string outselves rather than rely on browser to do it.
+  // DEBUGGER stops function from running at this point. Go to Console > Sources Tab then Scope. You can see the variables in here.
+  function highlight(strings, ...values){
+    debugger
+    let str = '';
+    strings.forEach((string, i) => {
+      // // Check to see if values[i] exists or keep it blank
+      // str += string + (values[i] || '');
+
+      // Or with backticks and a wrapping span tag
+      str += `${string} <span contenteditable class='hl'>${values[i] || ''}</span>`;
+    });
+    return str;
+  }
+
+  const name = "Dom";
+  const age = 30;
+
+  const sentence = highlight`My name is ${name} and I am ${age} years old.`;
+  console.log(sentence);
+
+  document.body.innerHTML = sentence;
+</script>
+</body>
+</html>
