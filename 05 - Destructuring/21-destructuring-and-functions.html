@@ -16,10 +16,19 @@
     return converted;
   }
 
+  const hundo = convertCurrency(100);
+  console.log(hundo); // returns object
+
+  const {USD, GPB, AUD, MEX} = convertCurrency(100);
+  console.log(USD, GPB, AUD, MEX); // returns values from object after destructuring
+
+  // Destructuring as part of passing variables and defaults to a function (order of these doesn't matter!) 
+  // ={} is actually setting a default value for the object should a user not pass any variable to the function
   function tipCalc({ total = 100, tip = 0.15, tax = 0.13 } = {}) {
     return total + (tip * total) + (tax * total);
   }
 
+  // working example!
   const bill = tipCalc({ tip: 0.20, total: 200 });
   console.log(bill);
 
