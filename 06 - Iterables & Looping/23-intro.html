@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Iterables & Looping</title>
+</head>
+<body>
+<script>
+  const cuts = ['Chuck', 'Brisket', 'Shank', 'Short Rib'];
+
+  
+
+  // LIMITATIONS - Doesn't read nicely e.g. cuts[i] should be 'cut' as it's the single item
+  // for (let i = 0; i < cuts.length; i++) {
+  //   console.log(cuts[i]);
+  // }
+
+  // LIMITATIONS - Can't break the loop once it's found the item
+  // cuts.forEach((cut) => {
+  //   console.log(cut);
+  //   if(cut === 'Brisket') {
+  //     // Can't do break or continue
+  //     break;
+  //   }
+  // });
+
+  // FOR IN gives you the index rather than value back.
+    // // LIMITATIONS - iterates over everything including functions that have been added to the prototype e.g. Adding property shop or creating shuffle function below
+    // // for (const index in cuts) {
+    // //   // index starting at 0
+    // //   console.log(index);
+    // //   // values
+    // //   console.log(cuts[index]);
+    // // }
+
+    // cuts.shop = 'MM MEats';
+
+    // /* eslint-disable */
+    // Array.prototype.shuffle = function() {
+    //   var i = this.length, j, temp;
+    //   if ( i == 0 ) return this;
+    //   while ( --i ) {
+    //     j = Math.floor( Math.random() * ( i + 1 ) );
+    //     temp = this[i];
+    //     this[i] = this[j];
+    //     this[j] = temp;
+    //   }
+    //   return this;
+    // };
+  // END FOR IN
+
+  // ANY TYPE OF DATA EXCEPT OBJECT
+  for (const cut of cuts) {
+    if(cut === 'Shank') {
+      // Continue - starts from found value
+      // continue;
+      // Break - breaks after found item
+      break;
+    }
+    console.log(cut);
+  }
+
+</script>
+</body>
+</html>

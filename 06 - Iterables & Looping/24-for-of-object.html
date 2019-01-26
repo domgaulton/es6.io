@@ -7,6 +7,8 @@
 <body>
 
 <script>
+  // OBJECT IS NOT ITERABLE SO CANT USE FOR OF
+
   const apple = {
     color: 'Red',
     size: 'Medium',
@@ -14,7 +16,13 @@
     sugar: 10
   };
 
+  // // Won't allow you to do
+  // for (const prop of apple) { // Alternatives `apple.entries()` or `Object.keys(apple)`
+  //   console.log(prop);
+  // }
+
   for (const prop in apple) {
+    // takes value from apple[index];
     const value = apple[prop];
     console.log(value, prop);
   }
