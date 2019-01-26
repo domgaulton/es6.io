@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>New String Methods</title>
+</head>
+<body>
+
+<script>
+const course = 'RFB2';
+const flightNumber = '20-AC2018-jz';
+const accountNumber = '825242631RT0001';
+
+const make = 'BMW';
+const model = 'x5';
+const colour = 'Royal Blue';
+
+// Nicer as we don't need as much use of regex!
+
+// .startsWith()
+course.startsWith('RFB'); // Returns True
+course.startsWith('rfb'); // Returns False - no way to do case insensitivity
+flightNumber.startsWith('AC',3); // True - Ignores the first 3 characters
+
+// .endsWith()
+flightNumber.endsWith('jz'); // True
+accountNumber.endsWith('RT'); // False
+accountNumber.endsWith('RT',11); // True - only take the first 11 characters
+
+// .includes()
+flightNumber.includes('C2'); // True
+flightNumber.includes('c2'); // False
+
+// .repeat()
+make.repeat(10); // repeats 10 times!
+
+// Create function to make console look nice.
+function leftPad(word, length = 20) {
+  // left padding with spaces for length (20) minus length of word then add the word to the end
+  return `→ ${' '.repeat(length - word.length)}${word}`;
+}
+
+console.log(leftPad(make));
+console.log(leftPad(model));
+console.log(leftPad(colour));
+
+
+</script>
+
+</body>
+</html>
