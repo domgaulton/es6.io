@@ -14,7 +14,7 @@ const tweets = new Promise((resolve) => {
 
 Promise
   .all([weather, tweets])
-  .then(responses => {
+  .then((responses) => {
     const [weatherInfo, tweetInfo] = responses;
     console.log(weatherInfo, tweetInfo);
   });
@@ -25,7 +25,7 @@ const streetCarsPromise = fetch('http://data.ratp.fr/api/datasets/1.0/search/?q=
 Promise
   .all([postsPromise, streetCarsPromise])
   .then(responses => Promise.all(responses.map(res => res.json())))
-  .then(responses => {
+  .then((responses) => {
     console.log(responses);
   });
 

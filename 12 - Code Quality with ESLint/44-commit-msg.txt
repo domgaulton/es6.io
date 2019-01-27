@@ -1,3 +1,4 @@
+#! GIT HOOK within .git folder under hooks. A hook is a code that runs before things happen. Add this file from line 2 onwards and save it here as `commit-msg`
 #!/bin/bash
 files=$(git diff --cached --name-only | grep '\.jsx\?$')
 
