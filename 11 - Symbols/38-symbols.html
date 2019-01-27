@@ -6,21 +6,42 @@
 </head>
 <body>
 <script>
+  // SUMMARY - we have a 7th primative type of JavaScript
+  // Number, String, Object, Boolean, NULL, Undefined
+  // and now... SYMBOL - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol
+
   const wes = Symbol('Wes');
   const person = Symbol('Wes');
 
+  console.log(wes);
+
+  wes == person // false THEY ARE UNIQUE as if you had a hash value
+
+  // Symbol is a unique identifier - avoids having clashes
+
   const classRoom = {
+    'Mark' : { grade: 50, gender: 'male' },
+    'olivia': { grade: 40, gender: 'female' },
+    'olivia': { grade: 80, gender: 'female' },
+  };
+  console.log(classRoom) // OVERWRITTEN SECOND OLIVIA - {Mark: {…}, olivia: {…}}
+
+  const classRoomSymbols = {
     [Symbol('Mark')] : { grade: 50, gender: 'male' },
-    [Symbol('olivia')]: { grade: 80, gender: 'female' },
+    [Symbol('olivia')]: { grade: 40, gender: 'female' },
     [Symbol('olivia')]: { grade: 80, gender: 'female' },
   };
+  console.log(classRoomSymbols) // UNIQUE KEYS - {Symbol(Mark): {…}, Symbol(olivia): {…}, Symbol(olivia): {…}}
 
-  for (const person in classRoom) {
-    console.log(person);
+  for (const person in classRoomSymbols) {
+    console.log(person); // NOTHING as symbols aren't iterable
   }
 
-  const syms = Object.getOwnPropertySymbols(classRoom);
-  const data = syms.map(sym => classRoom[sym]);
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertySymbols
+  // getOwnPropertySymbols returns an array with key as index and value as symbols
+  const syms = Object.getOwnPropertySymbols(classRoomSymbols);
+  // to get data map over and pass symbol identifier e.g. ['xa28sav37b1mme7'] 
+  const data = syms.map(sym => classRoomSymbols[sym]);
   console.log(data);
 
 </script>
