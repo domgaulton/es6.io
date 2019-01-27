@@ -6,6 +6,8 @@
 </head>
 <body>
 <script>
+  // SUMMARY chaining promises as relational database might not contain all data and you might have to look at another database for result
+
   const posts = [
     { title: 'I love JavaScript', author: 'Wes Bos', id: 1 },
     { title: 'CSS!', author: 'Chris Coyier', id: 2 },
@@ -18,40 +20,47 @@
     { name: 'Addy Osmani', twitter: '@addyosmani', bio: 'Googler' },
   ];
 
+  // To run this we will do something like getPostById(2)
   function getPostById(id) {
     // create a new promise
     return new Promise((resolve, reject) => {
-      // using a settimeout to mimick a databse
+      // using a settimeout to mimic a database as it is never instant!
       setTimeout(() => {
-        // find the post we want
+        // find the post we want by creating a variable and running it against the posts array
         const post = posts.find(post => post.id === id);
+        // if it exists (if there is a post with that id that's found)
         if(post) {
           resolve(post); // send the post back
         } else {
           reject(Error('No Post Was Found!'));
         }
-      }, 200);
+      }, 50); // half second delay
     });
   }
 
-  function hydrateAuthor(post) {
+  function addAuthorToObject(object) {
     // create a new promise
     return new Promise((resolve, reject) => {
-      // find the author
-      const authorDetails = authors.find(person => person.name === post.author);
-      if(authorDetails) {
-        // "hydrate" the post object with the author object
-        post.author = authorDetails;
-        resolve(post);
-      } else {
-        reject(Error('Can not find the author'));
-      }
+      // again mimic the database (but this time a slow one with 2 second delay)
+      setTimeout(() => {
+        // find the author as it takes the post from above as an argument
+        const author = object.author;
+        // if post.author is found in the authors array
+        const authorDetails = authors.find(person => person.name === author);
+        if(authorDetails) {
+          // add or "hydrate" the post object with the author object. Add a new key called author and pass the authorDetails from authors array to this key which stored from object parameter.
+          object.author = authorDetails;
+          resolve(object);
+        } else {
+          reject(Error('Can not find the author'));
+        }
+      }, 2000); // slower
     });
   }
 
-  getPostById(3)
+  getPostById(1)
     .then(post => {
-      return hydrateAuthor(post);
+      return addAuthorToObject(post); // this won't run until BOTH promises are returned (2000 ms later)
     })
     .then(post => {
       console.log(post);

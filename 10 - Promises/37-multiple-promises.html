@@ -6,33 +6,42 @@
 </head>
 <body>
 <script>
-  // const weather = new Promise((resolve) => {
-  //   setTimeout(() => {
-  //     resolve({ temp: 29, conditions: 'Sunny with Clouds'});
-  //   }, 2000);
-  // });
 
-  // const tweets = new Promise((resolve) => {
-  //   setTimeout(() => {
-  //     resolve(['I like cake', 'BBQ is good too!']);
-  //   }, 500);
-  // });
+  // Send a load of promises off and get responses when they come in (page load for example)
 
-  // Promise
-  //   .all([weather, tweets])
-  //   .then(responses => {
-  //     const [weatherInfo, tweetInfo] = responses;
-  //     console.log(weatherInfo, tweetInfo)
-  //   });
+  const weather = new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({ temp: 29, conditions: 'Sunny with Clouds'});
+    }, 2000);
+  });
+
+  const tweets = new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(['I like cake', 'BBQ is good too!']);
+    }, 500);
+  });
+
+  // pass all the arrays of promises but waits for every single promise until it completes
+  Promise
+    .all([weather, tweets])
+    .then(responses => {
+      // destructured consts
+      const [weatherInfo, tweetInfo] = responses;
+      // console.log(weatherInfo, tweetInfo) // .all() waits for all responses before it completes the promise
+    });
 
   const postsPromise = fetch('https://wesbos.com/wp-json/wp/v2/posts');
   const streetCarsPromise = fetch('http://data.ratp.fr/api/datasets/1.0/search/?q=paris');
 
   Promise
+    // pass array of promises
     .all([postsPromise, streetCarsPromise])
     .then(responses => {
-      return Promise.all(responses.map(res => res.json()))
+      // console.log(responses);
+      // return another promise.all have to turn to json otherwise they are just promise returns
+      return Promise.all(responses.map(response => response.json()))
     })
+    // returns a second promise
     .then(responses => {
       console.log(responses);
     });

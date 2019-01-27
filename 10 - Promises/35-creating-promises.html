@@ -6,14 +6,16 @@
 </head>
 <body>
 <script>
-  const p = new Promise((resolve, reject) => {
+  // new Promise to create a new promise // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+  const promise = new Promise((resolve, reject) => {
+    // Don't want to stop Javascript from running, when it gets result I can come back and deal with it
+    // resolve('Dom is cool');
     setTimeout(() => {
-      reject(Error('Err wes isn\'t cool'));
+      reject(Error('Err Dom isn\'t cool')); // wrapping in error gives additional information in the console error dispay // Err Dom isn't cool at setTimeout (35-creating-promises.html:14)
     }, 1000);
   });
 
-  p
-    .then(data => {
+  promise.then(data => {
       console.log(data);
     })
     .catch(err => {
