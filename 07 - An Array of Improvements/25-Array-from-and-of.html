@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Array .from() and .of()</title>
+</head>
+<body>
+  <div class="people">
+    <p>Wes</p>
+    <p>Kait</p>
+    <p>Snickers</p>
+  </div>
+<script>
+  
+  const people = document.querySelectorAll('.people p');
+  // console.log(people) 
+  // const names = people.map(person => person.textContent);
+  // people is a NodeList not an Array so you can't map. 
+
+  // Must be turned to an array Array.from() as follows
+    // const people = Array.from(document.querySelectorAll('.people p'));
+    // const names = people.map(person => person.textContent);
+    // const names = Array.from(people);
+
+  // Array.from(array,map) takes a second argument which is a map.
+  const peopleArray = Array.from(people, person => {
+    console.log(person);
+    return person.textContent;
+  });
+  console.log(peopleArray);
+
+  function sumAll() {
+    console.log(arguments) // created an object not an array so can't use reduce
+    const nums = Array.from(arguments);
+    return nums.reduce((prev, next) => prev + next, 0);
+  }
+
+  sumAll(2, 34, 23, 234, 234, 234234, 234234, 2342);
+
+  // Creates an array of the arguments
+  const ages = Array.of(12,4,23,62,34);
+  console.log(ages);
+
+</script>
+</body>
+</html>

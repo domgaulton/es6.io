@@ -177,9 +177,35 @@
         "display_src":"https://scontent.cdninstagram.com/hphotos-xpt1/t51.2885-15/e35/11326072_550275398458202_1726754023_n.jpg"
      }
   ];
-  const code = 'VBgtGQcSf';
-  const post = posts.find(post => post.code === code);
 
+  // Find and Find Index
+
+  // Loop over posts - set variable postExample as the found object
+  // const postExample = posts.find(post => {
+  //   // console.log(post);
+  //   // console.log(post.code);
+  //   if (post.code === 'VBgtGQcSf'){
+  //       return true;
+  //   }
+  //   return false;
+  // });
+
+  const code = 'VBgtGQcSf';
+  
+  // same as below 
+  // const post = posts.find(post => post.code === code);
+
+  // // Find the index of the code
+  // const postIndex = posts.findIndex(post => {
+  //   // console.log(post);
+  //   // console.log(post.code);
+  //   if (post.code === 'VBgtGQcSf'){
+  //       return true;
+  //   }
+  //   return false;
+  // });
+
+  // Or on one line
   const postIndex = posts.findIndex(post => post.code === code);
   console.log(postIndex);
 
