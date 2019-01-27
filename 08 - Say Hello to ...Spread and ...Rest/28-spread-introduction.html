@@ -10,7 +10,15 @@
   const featured = ['Deep Dish', 'Pepperoni', 'Hawaiian'];
   const specialty = ['Meatzza', 'Spicy Mama', 'Margherita'];
 
+  // Spread operator seperates the values from array;
+  const dom = ['DOM'];
+  const spreadDom = [...'DOM'];
+  console.log(dom); // ["DOM"]
+  console.log(spreadDom); // (3) ["D", "O", "M"]
+
+  // So we can add a pizza in the middle of two arrays using spread operator
   const pizzas = [...featured, 'veg', ...specialty];
+  // Create a new copy rather than just reference (so updates to this are ONLY on this new array)
   const fridayPizzas = [...pizzas];
 
   const deepDish = {

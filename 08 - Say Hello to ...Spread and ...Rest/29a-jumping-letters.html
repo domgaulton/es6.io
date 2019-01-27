@@ -16,9 +16,11 @@
       color:white;
       text-shadow: 3px 3px 0 rgba(0,0,0,0.2);
     }
+    /* Update to relative position */
     .jump span {
+      position: relative;
       display: inline-block;
-      transition: transform 0.2s;
+      transition: transform 0.1s;
       cursor:url('http://csscursor.info/source/santahand.png'), default;
     }
     .jump span:hover {
@@ -30,7 +32,17 @@
   <h2 class="jump">SPREADS!</h2>
 
 <script>
-  
+  const heading = document.querySelector('.jump');
+  const word = heading.textContent;
+
+  // Put HTML as the span wrapped letters
+  heading.innerHTML = sparanWrap(word);
+
+  // Take each element and wrap them in a span then let CSS span hover do the rest
+  function sparanWrap(word) {
+    // spread the word thats in the function(argument);
+    return [...word].map(letter => `<span>${letter}</span>`).join('');
+  }
 </script>
 </body>
 </html>

@@ -6,15 +6,24 @@
 </head>
 <body>
 <script>
-  // function convertCurrency(rate, tax, tip, ...amounts) {
-  //   console.log(rate, tax, tip, amounts);
-  //   return amounts.map(amount => amount * rate);
-  // }
+  // SUMMARY ... can be rest or spread (and they are sort of opposite!)
+  // SPREAD takes array and spreads it out
+  // REST takes a list and packs them together
 
-  // const amounts = convertCurrency(1.54, 10, 23, 52, 1, 56);
-  // console.log(amounts);
+  // Not good or scalable
+  // function convertCurrency(rate, tax, tip, ammount1, ammount2, ammount3, etc) {
+  function convertCurrency(rate, tax, tip, ...amounts) {
+    console.log(rate, tax, tip, amounts, arguments); // with arguments we don't know which are the rate tax and tip (unless you manually coded it)
+    // then map through the ammounts
+    return amounts.map(amount => amount * rate);
+  }
 
+  const amounts = convertCurrency(1.54, 10, 23, 52, 1, 56);
+  console.log(amounts);
+
+  // Runner takes name, id, then unknown length of arguments (kilometer lengths of past runs for example)
   const runner = ['Wes Bos', 123, 5.5, 5, 3, 6, 35];
+  // destructure into variables
   const [name, id, ...runs] = runner;
   console.log(name, id, runs);
 

@@ -11,8 +11,13 @@
     <p>Randy</p>
   </div>
 <script>
-  const people = Array.from(document.querySelectorAll('.people p'));
+  // Create array from nodelists using spread
+
+  //const people = Array.from(document.querySelectorAll('.people p'));
+  const people = [ ...document.querySelectorAll('.people p') ];
   const names = people.map((person) => person.textContent );
+  console.log(names);
+
 
   const deepDish = {
     pizzaName: 'Deep Dish',
@@ -20,8 +25,9 @@
     ingredients: ['Marinara', 'Italian Sausage', 'Dough', 'Cheese']
   };
 
+  // Spread array within object above
   const shoppingList = ['Milk', 'Flour', ...deepDish.ingredients];
-  // console.log(shoppingList);
+  console.log(shoppingList);
 
   const comments = [
     { id: 209384, text: 'I love your dog!' },
@@ -29,9 +35,13 @@
     { id: 632429, text: 'You are so dumb' },
     { id: 192834, text: 'Nice work on this wes!' },
   ];
+  
+  // Told to remove a comment and only given id
   const id = 632429;
+  // First find the comment index
   const commentIndex = comments.findIndex(comment => comment.id === id);
-
+  console.log(commentIndex);
+  // Create a new commentList wthout the comment that was found by taking everything up until and everything after
   const newComments = [...comments.slice(0,commentIndex), ...comments.slice(commentIndex + 1)];
   console.log(newComments);
 

@@ -8,15 +8,25 @@
 <script>
   const inventors = ['Einstein', 'Newton', 'Galileo'];
   const newInventors = ['Musk', 'Jobs'];
+  
+  // inventors.push(newInventors) // Doesn't concatinate so maybe? ['Einstein', 'Newton', 'Galileo', ['Musk', 'Jobs']]
+  
+  // Concat
+  inventorsNow = inventors.concat(newInventors);
+  console.log(inventorsNow);
+
+  // Push and spread into a function
   inventors.push(...newInventors);
   console.log(inventors);
 
+  // Array
   const name = ['Wes', 'Bos'];
 
   function sayHi(first, last) {
     alert(`Hey there ${first} ${last}`);
   }
 
+  // Spread Array into the function
   sayHi(...name);
 
 </script>
