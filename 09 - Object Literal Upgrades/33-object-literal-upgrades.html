@@ -10,6 +10,16 @@
   const last = 'bos';
   const age = 2;
   const breed = 'King Charles Cav';
+  
+  // // Long and repetative
+  // const dog = {
+  //   first: first,
+  //   last: last,
+  //   age: age,
+  //   breed: breed
+  // };
+
+  // If your property name and variable name are the same you can just set it to a single object value. firstName is set to show you can change it and pals show you can add to it.
   const dog = {
     firstName: first,
     last,
@@ -19,7 +29,13 @@
   };
   console.log(dog);
 
+  // Object with functions
   const modal = {
+    // Below create(selector) is shorthand for setting function same as object.variable name above
+    
+    // create: function(selector) {
+
+    // },
     create(selector) {
 
     },
@@ -39,13 +55,18 @@
   const value = '#ffc600';
 
   const tShirt = {
+    // create key and value dynamically from other variables
     [key]: value,
+    // template string to update key and run invertColor function on color value
     [`${key}Opposite`]: invertColor(value)
   };
+
+  console.log(tShirt);
 
   const keys = ['size', 'color', 'weight'];
   const values = ['medium', 'red', 100];
 
+  // shift plucks of one from each of the arrays as it goes through - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/shift
   const shirt = {
     [keys.shift()]: values.shift(),
     [keys.shift()]: values.shift(),
