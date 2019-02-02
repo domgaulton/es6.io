@@ -6,17 +6,21 @@
 </head>
 <body>
 <script>
+  // Make a function that will make little dogs (puppies). Use D for Dog as it is a 'prototype constructor function'
   function Dog(name, breed) {
     this.name = name;
     this.breed = breed;
   }
+  // When you add a method to the prototype Dog, it will be inherited by each of the objects.
   Dog.prototype.bark = function() {
     console.log(`Bark Bark! My name is ${this.name}`)
   }
+  // In the same way array.join() or array.pop() has methods, the Array class is a prototype function.
 
   const snickers = new Dog('Snickers', 'King Charles');
   const sunny = new Dog('Sunny', 'Golden Doodle');
 
+  // Overwrite the function
   Dog.prototype.bark = function() {
     console.log(`Bark Bark🇨🇦🇨🇦🇨🇦! My name is ${this.name} and I'm a ${this.breed}`);
   }
@@ -24,6 +28,8 @@
   Dog.prototype.cuddle = function() {
     console.log(`I love you owner!`);
   }
+
+  console.log(snickers.bark, sunny.cuddle)
 </script>
 </body>
 </html>

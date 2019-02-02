@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Extending</title>
+</head>
+<body>
+<script>
+  // Extend a standard javascript Array and add methods
+  class MovieCollection extends Array {
+    constructor(name, ...items) {
+      // new Array(item[0],item[1],item[2])
+      super(...items); // As an Array is already a method you have to use super to call it. Items is an array, so we need to spread it again so it takes each item one by one
+      this.name = name;
+    }
+    add(movie) {
+      this.push(movie);
+    }
+    topRated(limit = 10) {
+      return this.sort((a, b) => (a.stars > b.stars ? -1 : 1)).slice(0, limit);
+    }
+  }
+
+  // Like an array but extended
+  const movies = new MovieCollection('Wes\'s Fav Movies',
+    { name: 'Bee Movie', stars: 10 },
+    { name: 'Star Wars Trek', stars: 1 },
+    { name: 'Virgin Suicides', stars: 7 },
+    { name: 'King of the Road', stars: 8 }
+  );
+
+  movies.add({ name: 'Titanic', stars: 5 });
+
+  console.log(movies);
+  console.log(movies.name) // Show that Array has new function
+  console.table(movies.topRated());
+  console.table(movies.topRated(2)); // Limit it to two
+
+  for (const movie in movies) {
+    console.log(movie); // Returns all properties (index) as well as name as we set it above as a contructor
+  }
+
+  for (const movie of movies) {
+    console.log(movie); // Just calls the index
+  }
+
+</script>
+</body>
+</html>

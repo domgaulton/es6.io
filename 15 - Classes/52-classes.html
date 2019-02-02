@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Inheritance Review</title>
+</head>
+<body>
+<script>
+  // Class decloration or class expression below both work. See 51 for entire old functionality
+  class Dog {
+    // Lots of methods to put inside a class, but important one is a constructor. This is what happens when someone makes a new version of the class. Can pass arguments and set names as usual within the constructor. 
+    constructor(name, breed){
+      this.name = name;
+      this.breed = breed;
+    } // DO NOT PUT A COMMA
+    // Need to add prototype methods
+    bark() {
+      console.log(`Bark Bark! My name is ${this.name}`);
+    }
+    cuddle() {
+      console.log(`I love you owner!`);
+    }
+
+    // Static Method (This will only work as a method of Dog.info(), not from any new prototypes e.g. snickers.info())
+    static info() {
+      console.log(`A dog is 10x better than a cat`);
+    }
+
+    // This will work on a prototype of the class e.g. snickers.description()
+    // The get syntax binds an object property to a function that will be called when that property is looked up.
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get
+    get description() {
+      return `${this.name} is a ${this.breed} type of dog`;
+    }
+
+    // This will work on a prototype of the class e.g. snickers.description() - sets a place where you can log a value for the object (like a database?)
+    // The set syntax binds an object property to a function to be called when there is an attempt to set that property.
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get
+    set nickNames(value) {
+      this.nick = value.trim(); // can't use nickName variable inside
+    }
+    get nickNames() {
+      return this.nick;
+    }
+    // TO USE THESE:
+    // snickers.nickNames = 'snicky' // Sets the name as snicky
+    // snickers.nickNames // Expected return 'snicky'
+  }
+
+  // Must use new - Uncaught TypeError: Class constructor Dog cannot be invoked without 'new'
+  const snickers = new Dog('Snickers', 'King Charles');
+  const sunny = new Dog('Sunny', 'Golden Doodle');
+
+  // // ANOTHER WAY OF WRITING A CLASSClass expression
+  // const Dog = class {
+
+  // }
+
+  // Now done with lines 10 and 12
+  // function Dog(name, breed) {
+  //   this.name = name;
+  //   this.breed = breed;
+  // }
+
+  // Now done with line 17
+  // Dog.prototype.bark = function() {
+  //   console.log(`Bark Bark! My name is ${this.name}`);
+  // };
+
+  // Now done with line 20
+  // Dog.prototype.cuddle = function() {
+  //   console.log(`I love you owner!`);
+  // };
+
+  
+
+</script>
+</body>
+</html>

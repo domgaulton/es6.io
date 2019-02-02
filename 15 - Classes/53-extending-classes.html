@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Extending Classes</title>
+</head>
+<body>
+<script>
+  // This is a BASIC animal class - bare bones
+  class Animal {
+    constructor(name) {
+      this.name = name;
+      this.thirst = 100;
+      this.belly = [];
+    }
+    // Removes thirst level
+    drink() {
+      this.thirst -= 10;
+      return this.thirst;
+    }
+    // Adds food to empty array (belly)
+    eat(food) {
+      this.belly.push(food);
+      return this.belly;
+    }
+  }
+
+  // Extend a dog to add dog specific features
+  class Dog extends Animal {
+    constructor(name, breed) {
+      // this.name = name // Won't work as 'this' is not defined because this refers to animal
+      super(name); // Super means call the thing that you're extending. Call animal then layer on additional things. Essentially just calling Animal(name)!
+      this.breed = breed; // New item so need to set it
+    }
+    // add Dog specific methods
+    bark() {
+      console.log('Bark bark I\'m a dog');
+    }
+  }
+
+  // Create a new basic animal
+  const rhino = new Animal('Rhiney');
+  rhino.eat('burger');
+  rhino.drink();
+  rhino.eat('cheese');
+  console.log(rhino);
+
+  // Create a Dog which is basic animal + other features
+  const snickers = new Dog('Snickers', 'King Charles');
+  snickers.eat('bone');
+  snickers.drink();
+  snickers.drink();
+  snickers.bark();
+  console.log(snickers);
+
+</script>
+</body>
+</html>

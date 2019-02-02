@@ -1,0 +1,45 @@
+ES6 For Everyone
+🔥 Updated for ES7/ES2016 and ES8/ES2017 including Async+Await, Babel 7 and more!
+Release 06/2018
+Duration 07:36:34
+
+A premium training course to strengthen your core JavaScript skills
+and master all that ES6 has to offer.
+
+JavaScript is changing —
+Here's how to stay up to date!
+
+ES6 is a major update to JavaScript that includes dozens of new features. With a focus on simplicity and readability, this course is an efficient way to find out what is new in JavaScript and most importantly when and how you should use it.
+
+Join me for a fun and approachable look at all ES6 has to offer — boost your skills and further your career.
+
+
+What Will I Learn?
+
+The goal of this course is simple: greatly strengthen your core JavaScript skills while preparing and updating you to write modern JavaScript.
+
+The course includes 21 modules that go through ES6 in its entirety. An exhaustive list of topics is cataloged below, but at a glance:
+
+    ES6 Easy Wins - New Variables, Scoping and Template Strings
+    New Language Features — Arrow Functions, Destructuring
+    New Iterables and Looping over data
+    What the heck those ...three ...little ...dots actually do
+    How to structure your JavaScript with Modules and NPM
+    Advanced Classes, Proxies, Generators, Sets and Maps
+    How to write clean and consistent JavaScript with ESLint
+    Proper tooling + bundling setup with Webpack
+    + So much more — Check below for a full listing of videos
+
+
+Who is This For?
+
+Almost everyone! Advanced JavaScript developers will be able to go through the course a little more quickly, but I've designed this course to be as approachable as possible.
+
+Some of the videos feature a review of topics that are a little shaky for some such as scoping, keyword this and prototypal inheritance.
+
+This isn't JavaScript from scratch, so if you are looking for a beginner course this probably isn't it. You should have some knowledge of functions, variables, Objects, Arrays and other fundamentals.
+
+    Those reliant on jQuery, looking to have a better grasp on the core features of JavaScript.
+    Existing JS developers who want to bridge their personal learning gaps and learn ES6 start to finish.
+    PHP & WordPress Developers looking to become stronger on the client side.
+    Anyone who wants to get better at JavaScript and learns well from seeing both fundamental and advanced concepts in practice.
