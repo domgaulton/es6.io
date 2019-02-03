@@ -6,18 +6,28 @@
 </head>
 <body>
 <script>
+  // Maps for Objects. Sets for Arrays
   const dogs = new Map();
 
+  // Like .add for a set
   dogs.set('Snickers', 3);
   dogs.set('Sunny', 2);
   dogs.set('Hugo', 10);
 
-  dogs.forEach((val, key) => console.log(val, key));
+  console.log(dogs.has('Snickers'));
 
-  for (const [key, val] of dogs) {
-    console.log(key, val);
+  // Can use forEach and get key and value
+  dogs.forEach((key, value) => console.log(key, value));
+
+  // Or use for of loop to get an array
+  for (const dog of dogs) {
+    console.log(dog);
   }
 
+  // Or use for of loop
+  for (const [key, value] of dogs) {
+    console.log(key, value);
+  }
 </script>
 </body>
 </html>

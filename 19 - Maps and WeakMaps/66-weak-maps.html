@@ -22,8 +22,14 @@
   strong.set(dog1, 'Snickers is the best!');
   weak.set(dog2, 'Sunny is the 2nd best!');
 
-  dog1 = null;
-  dog2 = null;
+  dog1 = null; // delete them both
+  dog2 = null; // delete them both
+
+  // Check both strong and weak maps with a delay (memory leak)
+  setTimeout(function(){
+    console.log('strong:', strong);
+    console.log('weak:', weak);
+  },8500); // Takes some time for weakmap memory to clear!
 
 </script>
 </body>

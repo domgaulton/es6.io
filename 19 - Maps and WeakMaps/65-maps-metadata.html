@@ -5,7 +5,7 @@
   <title>Maps!</title>
   <style>
     button {
-      font-size: 50px;
+      font-size: 20px;
       margin:10px;
     }
   </style>
@@ -19,13 +19,17 @@
 <button>Dancer 💃</button>
 
 <script>
+  // Why use Map not just object? Because you can use the object as the key!
   const clickCounts = new Map();
   const buttons = document.querySelectorAll('button');
 
+  // Loop over every button (the map object is the key remember) and add each button to the map clickCounts
   buttons.forEach(button => {
     clickCounts.set(button, 0);
     button.addEventListener('click', function() {
       const val = clickCounts.get(this);
+      console.log(val);
+      // Add the click to the specific button
       clickCounts.set(this, val + 1);
       console.log(clickCounts);
     });
