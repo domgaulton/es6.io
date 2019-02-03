@@ -6,20 +6,35 @@
 </head>
 <body>
 <script>
+  // Allow you to overwrite the default behaviour of a function
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy
+
   const person = { name: 'Wes', age: 100 };
+
+  // Takes an object and a handler. Each thing inside a handler is called a trap
   const personProxy = new Proxy(person, {
+    // Handler Get - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/get
     get(target, name) {
-      // console.log('someone is asking for ', target, name);
-      return target[name].toUpperCase();
+      console.log('someone is asking for ', target, name);
+      return target[name];
     },
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/set
     set(target, name, value) {
       if(typeof value === 'string') {
         target[name] = value.trim().toUpperCase() + '✂️';
+      }
+      if(typeof value === 'number') {
+        target[name] = (value * 2);
       }
     }
   });
 
   personProxy.name = 'Wesley';
+  personProxy.age = 45;
+  personProxy.cool = '    This string will be chopped and made into uppercase    '
+
+  // console.log(personProxy.name);
+  console.log(person); // The proxy changes the value of the object when it's set above (line 29)
 </script>
 </body>
 </html>

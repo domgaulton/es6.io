@@ -6,8 +6,10 @@
 </head>
 <body>
 <script>
+  // Reformat phone numbers to store in database
   const phoneHandler = {
     set(target, name, value) {
+      // remove the spaces
       target[name] = value.match(/[0-9]/g).join('');
     },
     get(target, name) {
@@ -15,7 +17,14 @@
     }
   }
 
+  // Start with empty object as there is no variable set at the start. The phoneNumbers const is a proxy
   const phoneNumbers = new Proxy({}, phoneHandler);
+  phoneNumbers.home = '+234 -344-1322';
+  phoneNumbers.work = '(123) 234 2343';
+
+  console.log(phoneNumbers);
+  console.log(phoneNumbers.home);
+  console.log(phoneNumbers.work);
 </script>
 </body>
 </html>

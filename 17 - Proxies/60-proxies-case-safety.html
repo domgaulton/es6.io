@@ -6,12 +6,15 @@
 </head>
 <body>
 <script>
+  // make sure id: 100 isn't spelled incorrectly e.g. Id iD or ID
   const safeHandler = {
     set(target, name, value) {
-      const likeKey = Object.keys(target).find(k => k.toLowerCase() === name.toLowerCase());
+      // check to see if the key already exists (lowercase for both)
+      const likeKey = Object.keys(target).find(key => key.toLowerCase() === name.toLowerCase());
 
+      // If no key in the target and you're trying to set a new key
       if (!(name in target) && likeKey) {
-        throw new Error(`Oops! Looks like like we already have a(n) ${name} property but with the case of ${likeKey}.`);
+        throw new Error(`Oops! Looks like we already have a(n) ${name} property but with the case of ${likeKey}.`);
       }
       target[name] = value;
     }
@@ -19,7 +22,9 @@
 
   const safety = new Proxy({ id: 100 }, safeHandler);
 
-  safety.ID = 200;
+  safety.ID = 101;
+  safety.name = 'Dom';
+  console.log(safety);
 
 </script>
 </body>
