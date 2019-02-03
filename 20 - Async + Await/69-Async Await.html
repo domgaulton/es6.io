@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Async Await</title>
+</head>
+
+<body>
+  <script>
+    // Asyncronous - code completes even if task isn't finished. Start a task but carry on to next value. Couldn't make sense to block entire page load to get something from external site
+    function breathe(amount) {
+      // Create your own promise
+      return new Promise((resolve, reject) => {
+        if (amount < 500) {
+          reject('That is too small of a value'); // And stop the function
+        }
+        setTimeout(() => resolve(`Done for ${amount} ms`), amount);
+      });
+    }
+
+    // Instead of chaining - Create an async function where we can use await (like the chaining in previous)
+    
+    async function go(name, last) {
+      // without the await, breath would return a promise - but with the await it returns the promise but holds on to see if its resolved or rejected
+      const res = await breathe(1000);
+      console.log(res);
+      const res2 = await breathe(600);
+      console.log(res2);
+      const res3 = await breathe(750);
+      console.log(res3);
+      const res4 = await breathe(300); // but how do we catch the error?
+      console.log(res4);
+      console.log('end');
+    }
+
+    // With ES6
+    // const go = async => {
+    //
+    // }
+
+    go();
+  </script>
+</body>
+
+</html>

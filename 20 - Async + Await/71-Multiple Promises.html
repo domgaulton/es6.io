@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Async Await</title>
+</head>
+
+<body>
+  <script>
+    // Promise.all does multiple promises at same time and waits for it all to complete before returning
+    async function go() {
+      // we want them to go at the same time rather than wait for promise to return
+      // store both fetch as a const then later use await
+      const p1 = fetch('https://api.github.com/users/wesbos') // .then(r => r.json()); * See line 17
+      const p2 = fetch('https://api.github.com/users/stolinski')
+      // Wait for both of them to come back (mega promise)
+      const response = await Promise.all([p1, p2]);
+      console.log('response: ', response); // Just the response for now
+      const dataPromises = response.map(dataPromise => dataPromise.json());
+      console.log('dataPromises: ', dataPromises); // And now the promise (still waiting for both to green light)
+      // Destructure so wes and scott have their own values
+      const [wes, scott] = await Promise.all(dataPromises);
+      console.log(wes, scott);
+    }
+
+    go();
+
+    async function getData(names) {
+      // Promises returns a fetch for each of the arguments and turns to json 
+      const promises = names.map(name => fetch(`https://api.github.com/users/${name}`).then(r => r.json()));
+      // Wait for them all to be avaliable. Could do Promise.race if you just want quickest one to come back
+      const people = await Promise.all(promises);
+      console.log(people);
+    }
+
+    getData(['wesbos', 'stolinski', 'darcyclarke']);
+  </script>
+</body>
+
+</html>

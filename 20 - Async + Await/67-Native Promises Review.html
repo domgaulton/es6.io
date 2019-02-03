@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Native Promises</title>
+</head>
+
+<video controls class="handsome"></video>
+
+<body>
+  <script>
+    // fetch - most popular apis for completing ajax calls
+    fetch('https://api.github.com/users/wesbos')
+    .then(res => {
+      console.log(res);
+      return res.json();
+    })
+    .then(res => {
+      console.log(res);
+    })
+    .catch(err => {
+      console.error('OH NOO!!!!!!!');
+      console.error(err);
+    })
+
+    const videoInput = document.querySelector('.handsome');
+
+    // get user media (like fetch)
+    navigator.mediaDevices.getUserMedia({ video: true })
+    .then(mediaStream => {
+      console.log(mediaStream);
+      videoInput.srcObject = mediaStream;
+      // videoInput.src = window.URL.createObjectURL(media); // Another way to use media stream as the source
+      videoInput.load();
+      videoInput.play();
+    }).catch(err => {
+      console.log(err);
+    })
+  </script>
+</body>
+
+</html>

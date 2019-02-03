@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Async Await</title>
+</head>
+
+<body>
+  <script>
+    function breathe(amount) {
+      return new Promise((resolve, reject) => {
+        if (amount < 500) {
+          reject('That is too small of a value');
+        }
+        setTimeout(() => resolve(`Done for ${amount} ms`), amount);
+      });
+    };
+
+    // // Use try and catch to catch errors
+    // async function go(name, last) {
+    //   try {
+    //     const res = await breathe(1000);
+    //     console.log(res);
+    //     const res2 = await breathe(600);
+    //     console.log(res2);
+    //     const res3 = await breathe(750);
+    //     console.log(res3);
+    //     const res4 = await breathe(300);
+    //     console.log(res4);
+    //     console.log('end');
+    //   } catch (err) {
+    //     console.log(err);
+    //   }
+    // };
+    
+    // Without catch and try
+    async function go(name) {
+      console.log(`Checking the arg(s): ${name} show.`)
+      const res = await breathe(1000);
+      console.log(res);
+      const res2 = await breathe(600);
+      console.log(res2);
+      const res3 = await breathe(750);
+      console.log(res3);
+      const res4 = await breathe(300);
+      console.log(res4);
+      console.log('end');
+    };
+
+    // Another way with high order function so we pass other functions with promises through it LIKE map(function(){}) does.
+    function catchErrors(fn){  // Create a function that takes a function and runs it
+      return function(...args){  // This function simply runs another (like map example)
+        return fn(...args).catch((err) =>{  // RUN the function you've passed fn() and catch errors
+          console.log(err);
+        })
+      }
+    }
+
+    const wrappedFunction = catchErrors(go); // wrappedFunction becomes the function with a built in error catch
+
+    wrappedFunction('Dom'); // Can pass arguments here as they get spread in catchErrors function.
+  </script>
+</body>
+
+</html>
