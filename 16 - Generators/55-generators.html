@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Generators</title>
+</head>
+<body>
+<script>
+  // // SUMMARY to make a generator we put an * and 'yeild' in the function which means 'return, for now' e.g. listNames
+  // function* listNames() {
+  //   yield "Dom";
+  //   yield "Ben";
+  //   yield "Mum";
+  // }
+  // const names = listNames();
+  // console.log(names) // listNames {<suspended>} | __proto__: Generator | [[GeneratorStatus]]: "suspended"
+  // console.log(names.next()) // Returns object {value: "Dom", done: false}
+  // console.log(names.next()) // Returns object {value: "Ben", done: false}
+  // console.log(names.next()) // Returns object {value: "Mum", done: false}
+  // console.log(names.next()) // Returns object {value: undefined, done: true}
+
+  function* listPeople() {
+    let i = 0;
+    yield i;
+    i++;
+    yield i;
+    i++;
+    yield i;
+  }
+
+  const people = listPeople();
+
+  const inventors = [
+    { first: 'Albert', last: 'Einstein', year: 1879 },
+    { first: 'Isaac', last: 'Newton', year: 1643 },
+    { first: 'Galileo', last: 'Galilei', year: 1564 },
+    { first: 'Marie', last: 'Curie', year: 1867 },
+    { first: 'Johannes', last: 'Kepler', year: 1571 },
+    { first: 'Nicolaus', last: 'Copernicus', year: 1473 },
+    { first: 'Max', last: 'Planck', year: 1858 },
+  ];
+
+  function* loop(array) {
+    console.log(inventors);
+    for (const item of array) {
+      yield item;
+    }
+  }
+
+  const inventorGen = loop(inventors);
+
+  console.log(inventorGen); // loop {<suspended>} - Initialises loop but doesn't start until you use next
+  console.log(inventorGen.next()); // {value: {first: "Albert", last: "Einstein", year: 1879}, done: false}
+
+
+</script>
+</body>
+</html>

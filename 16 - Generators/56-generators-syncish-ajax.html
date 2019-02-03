@@ -6,20 +6,25 @@
 </head>
 <body>
 <script>
+  // Do waterfall like AJAX (then, then, then) with a generator.
 
+  // Run steps and ajax function below inside / with the yield.
   function ajax(url) {
     fetch(url).then(data => data.json()).then(data => dataGen.next(data))
   }
 
   function* steps() {
+    // Step by step as if they relied on each other
     console.log('fetching beers');
     const beers = yield ajax('http://api.react.beer/v2/search?q=hops&type=beer');
-    console.log(beers);
+    console.log(beers); // This is the data as the variable is now linked to the returned data by using .next(data) at the end of the ajax function
 
+    // Step by step as if they relied on each other
     console.log('fetching wes');
     const wes = yield ajax('https://api.github.com/users/wesbos');
     console.log(wes);
 
+    // Step by step as if they relied on each other
     console.log('fetching fat joe');
     const fatJoe = yield ajax('https://api.discogs.com/artists/51988');
     console.log(fatJoe);

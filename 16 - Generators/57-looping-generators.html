@@ -6,6 +6,7 @@
 </head>
 <body>
 <script>
+
   function* lyrics() {
     yield `But don't tell my heart`;
     yield `My achy breaky heart`;
@@ -17,9 +18,11 @@
 
   const achy = lyrics();
 
+  // Run on page load (it's not in the function like in 55-generators.html lesson)
   for (const line of achy) {
     console.log(line);
   }
+
 </script>
 </body>
 </html>
