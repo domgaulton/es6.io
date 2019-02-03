@@ -6,14 +6,20 @@
 </head>
 <body>
 <script>
-  let dog1 = { name: 'Snickers', age: 3 };
-  let dog2 = { name: 'sunny', age: 1 };
+	// Like a set but benefits for some sitations
+	let dog1 = { name: 'Snickers', age: 3 };
+	let dog2 = { name: 'sunny', age: 1 };
 
-  const weakSauce = new WeakSet([dog1, dog2]);
+	// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet
+	const weakSauce = new WeakSet([dog1, dog2]);
 
-  console.log(weakSauce);
-  dog1 = null;
-  console.log(weakSauce);
+	// for (const dog of weakSauce){
+	// 	console.log(dog); // ERROR: weakSauce is not iterable
+	// }
+
+	console.log(weakSauce);
+	dog1 = null;
+	console.log(weakSauce); // Memory leak to delete it - not updated but try running weakSauce in the browser and you'll see it's gone. See garbage collection
 
 </script>
 </body>

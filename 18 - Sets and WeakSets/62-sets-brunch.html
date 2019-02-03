@@ -8,15 +8,25 @@
 <script>
   const brunch = new Set();
   // as people start coming in
-  brunch.add('wes');
+  brunch.add('Wes');
   brunch.add('Sarah');
   brunch.add('Simone');
-  // ready to open!
+
+  // ready to open, line is forming!
   const line = brunch.values();
   console.log(line.next().value);
   console.log(line.next().value);
+  
+  // more people turn up
+  brunch.add('Dom');
+  console.log(line);
   brunch.add('Heather');
+  console.log(line.next().value);
   brunch.add('Snickers');
+
+  // Check line now
+  console.log(line);
+
   console.log(line.next().value);
   console.log(line.next().value);
   console.log(line.next().value);
