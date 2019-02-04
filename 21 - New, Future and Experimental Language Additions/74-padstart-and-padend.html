@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>String padStart and padEnd</title>
+</head>
+
+<body>
+  <script>
+	// The padStart() method pads the current string with another string (multiple times, if needed) until the resulting string reaches the given length. The padding is applied from the start (left) of the current string. - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart
+	console.log('Dom'.padStart(6)) // Returns: `   Dom` with 3 padded spaces at the start
+	console.log('Dom'.padEnd(6, '*')) // Returns: `Dom***` with 3 padded spaces filled with * at the end
+
+    const strings = ['short', 'medium size', 'this is really really long', 'this is really reall really really really really long'];
+    
+    // Right align the strings. First make new array to find longest based on length (Get the last value)
+    const longestString = strings.sort(str => str.length).map(str => str.length)[strings.length -1 ];
+    console.log('longest: ', longestString);
+    console.log('index: ', strings.length -1);
+    strings.forEach(str => console.log(str.padStart(longestString)));
+
+    // Useful for show numbers e.g.
+    function formatShowNumber(num){
+    	const show = `${num}`.padStart(3, '0');
+    	console.log(show);
+    }
+    formatShowNumber(1);
+    formatShowNumber(2);
+    formatShowNumber(3);
+    formatShowNumber(10);
+    formatShowNumber(99);
+    formatShowNumber(612);
+  </script>
+</body>
+
+</html>

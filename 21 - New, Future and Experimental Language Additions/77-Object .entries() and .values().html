@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Object .entries() and .values()</title>
+</head>
+
+<body>
+  <script>
+    // Object has a key and value (key is unique identifier, value is the data for the key)
+    const inventory = {
+      backpacks: 10,
+      jeans: 23,
+      hoodies: 4,
+      shoes: 11
+    };
+
+    // Make a nav for the inventory using map
+    // console.log(Object.keys(inventory));
+    const nav = Object.keys(inventory).map(item => `<li>${item}</li>`).join('');
+    console.log('nav', nav);
+
+    // tell us total values we have using reduce
+    // console.log(Object.values(inventory));
+    const totalInventory = Object.values(inventory).reduce((a, b) => a + b);
+    console.log('inventory', totalInventory);
+
+    // Print an inventory list with numbers with forEach loop
+    // console.log(Object.entries(inventory));
+    Object.entries(inventory).forEach(([key, val]) => {
+      console.log(key, val);
+    });
+
+    // Benefit of for of loop is that we can break out of it upon discovering item!
+    for (const [key, val] of Object.entries(inventory)) {
+      console.log(key);
+      if (key === 'jeans') break;
+    }
+  </script>
+</body>
+
+</html>
